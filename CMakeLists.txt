@@ -10,10 +10,10 @@ cmake_policy(SET CMP0091 NEW)
 
 # Define the Project Name and Description
 project(
-    modern_cpp_project
+    guacaplus
     VERSION 1.0.0
     LANGUAGES CXX
-    DESCRIPTION "moderncpp-project is a starter project for Modern C++"
+    DESCRIPTION "Guacamole REST API bindings for Modern C++"
 )
 
 #
@@ -130,8 +130,10 @@ configure_file(${CMAKE_CURRENT_LIST_DIR}/cmake/version.hpp.in ${VERSION_HEADER_L
 # ######################################################################################################################
 
 include(CPM)
+# 
 CPMAddPackage("gh:TheLartians/Format.cmake@1.7.0")
-# PackageProject.cmake will be used to make our target installable
+
+#PackageProject.cmake will be used to make our target installable
 CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.6.0")
 
 # Collect the built libraries and include directories
@@ -144,6 +146,8 @@ list(APPEND ${PROJECT_NAME}_DEPENDENCIES "fmt 8.0.1")
 CPMAddPackage("gh:gabime/spdlog@1.9.2")
 list(APPEND ${PROJECT_NAME}_DEPENDENCIES "spdlog 1.9.2")
 
+CPMAddPackage("gh:whoshuu/cpr@1.6.2") 
+list(APPEND ${PROJECT_NAME}_DEPENDENCIES "cpr 1.6.2")
 # ######################################################################################################################
 # Source tree
 # ######################################################################################################################

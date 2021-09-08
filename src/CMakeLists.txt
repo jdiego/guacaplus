@@ -51,7 +51,11 @@ verbose_message("Applied compiler warnings. Using standard ${CMAKE_CXX_STANDARD}
 # Link dependencies
 
 # Identify and link with the specific "packages" the project uses
-target_link_libraries(${LIBNAME} PRIVATE Threads::Threads fmt::fmt)
+target_link_libraries(${LIBNAME} 
+    PRIVATE 
+        Threads::Threads 
+        fmt::fmt
+    )
 
 # Set the build/user include directories Allow usage of header files in the
 # `src` directory, but only for utilities

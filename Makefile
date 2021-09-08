@@ -25,7 +25,7 @@ endef
 export PRINT_HELP_PYSCRIPT
 
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
-PROJECT_NAME := "modern-cpp-project"
+PROJECT_NAME := "guacaplus"
 INSTALL_LOCATION := /tmp/$(PROJECT_NAME)
 
 help:
