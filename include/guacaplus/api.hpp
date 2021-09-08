@@ -2,7 +2,7 @@
 #define GUACAPLUS_API_INCLUDED
 
 #include <string>
-#include <string_view>
+
 namespace guacaplus {
     class GuacamoleAPI
     {
@@ -17,7 +17,7 @@ namespace guacaplus {
             std::string m_password;
             std::string m_secret;
             std::string m_rest_api;
-            bool verify;
+            bool m_verify;
     };
 
 } // -----  end of namespace guacaplus -----
