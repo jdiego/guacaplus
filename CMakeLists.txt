@@ -115,6 +115,16 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     include(CMakePrintHelpers)
     include(CompilerWarnings)
     # include(StaticAnalyzers.cmake)
+########### Add uninstall target ###############
+CONFIGURE_FILE(
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/cmake/cmake_uninstall.cmake"
+  IMMEDIATE @ONLY)
+ADD_CUSTOM_TARGET(uninstall
+  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake/cmake_uninstall.cmake")
+
+
+
 endif()
 
 # ######################################################################################################################
@@ -146,7 +156,12 @@ list(APPEND ${PROJECT_NAME}_DEPENDENCIES "fmt 8.0.1")
 CPMAddPackage("gh:gabime/spdlog@1.9.2")
 list(APPEND ${PROJECT_NAME}_DEPENDENCIES "spdlog 1.9.2")
 
-CPMAddPackage("gh:whoshuu/cpr@1.6.2") 
+CPMAddPackage(
+    NAME cpr 
+    GITHUB_REPOSITORY whoshuu/cpr
+    GIT_TAG 1.6.2
+    OPTIONS "BUILD_CPR_TESTS OFF" "CPR_BUILD_TESTS OFF" "CPR_BUILD_TESTS_SSL OFF" "CPR_FORCE_USE_SYSTEM_CURL OFF"
+) 
 list(APPEND ${PROJECT_NAME}_DEPENDENCIES "cpr 1.6.2")
 # ######################################################################################################################
 # Source tree
@@ -198,15 +213,6 @@ packageProject(
     # defaults to YES for header only (i.e. INTERFACE) libraries
     ARCH_INDEPENDENT YES
 )
-
-########### Add uninstall target ###############
-CONFIGURE_FILE(
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/cmake/cmake_uninstall.cmake"
-  IMMEDIATE @ONLY)
-ADD_CUSTOM_TARGET(uninstall
-  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake/cmake_uninstall.cmake")
-
 
 
 # ######################################################################################################################

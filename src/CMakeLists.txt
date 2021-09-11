@@ -55,6 +55,7 @@ target_link_libraries(${LIBNAME}
     PRIVATE 
         Threads::Threads 
         fmt::fmt
+        cpr::cpr  
     )
 
 # Set the build/user include directories Allow usage of header files in the
