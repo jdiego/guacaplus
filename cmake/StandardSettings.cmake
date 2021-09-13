@@ -56,7 +56,7 @@ endif()
 # ---------------------------------------------------------------------------
 # Unit testing
 # ---------------------------------------------------------------------------
-option(ENABLE_TESTING "Build all tests" FALSE)
+option(ENABLE_TESTING "Build all tests" TRUE)
 option(${PROJECT_NAME}_ENABLE_UNIT_TESTING "Enable unit tests for the ${PROJECT_NAME} (from the `test` subfolder)." ON)
 
 # ---------------------------------------------------------------------------
